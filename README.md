@@ -22,9 +22,9 @@ I WANT to add important events to a daily planner
 SO THAT I can manage my time effectively
 ```
 
-The following animation demonstrates the application functionality:
+The following screenshots demonstrates the application functionality:
 
 ![alt text](Assets/Overview.png)
 ![alt text](Assets/Clear.png)
-![alt text](Aseets/Events.png)
+![alt text](Assets/Events.png)
 
