@@ -24,5 +24,7 @@ SO THAT I can manage my time effectively
 
 The following animation demonstrates the application functionality:
 
-![day planner demo](./Assets/05-third-party-apis-homework-demo.gif)
+![alt text](Assets/Overview.png)
+![alt text](Assets/Clear.png)
+![alt text](Aseets/Events.png)
 
