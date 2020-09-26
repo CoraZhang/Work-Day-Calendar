@@ -92,6 +92,18 @@
         border-top: 2px dashed #49274A;
     }
     
+    .btn-outline-success {
+        color: black;
+        font-size: 30px;
+        border-color: #F8EEE7;
+    }
+    
+    .btn-outline-success:hover {
+        color: black !important;
+        background-color: #F8EEE7 !important;
+        border-color: #F8EEE7 !important;
+    }
+    
     .past {
         background-color: #F8EEE7;
         color: #49274A;

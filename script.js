@@ -19,17 +19,25 @@ window.onload = function() {
         });
     setTimeblockText(currentTimeblocks);
 };
-
-function getCurrentTimeblocks() {
-    const currentTimeblocks = localStorage.getItem('timeblockObjects');
-    return currentTimeblocks ? JSON.parse(currentTimeblocks) : [];
-}
 //Display current date and time in lead class
 function displayCurrentDate(currentTime) {
     document.getElementById('currentDay')
         .textContent = currentTime.format('dddd, MMMM Do');
-    document.getElementById('currentTime')
-        .textContent = currentTime.format("h:mm:ss A");
+    realtime();
+}
+//function to display real time on screen
+function realtime() {
+    let currentTime = moment().format('h:mm:ss a');
+    document.getElementById('currentTime').innerHTML = currentTime;
+    setInterval(() => {
+        currentTime = moment().format('h:mm:ss a');
+        document.getElementById('currentTime').innerHTML = currentTime;
+    }, 1000)
+}
+
+function getCurrentTimeblocks() {
+    const currentTimeblocks = localStorage.getItem('timeblockObjects');
+    return currentTimeblocks ? JSON.parse(currentTimeblocks) : [];
 }
 
 //functions for displaying all timeblock rows 
@@ -70,7 +78,7 @@ function createHourDiv(hour) {
     return hourCol;
 }
 
-// create areas to enter the events
+// create text areas to enter the events
 function createTextArea(hour, currentHour) {
     const textArea = document.createElement('textarea');
     textArea.classList.add(getTextAreaBackgroundClass(hour, currentHour));
@@ -82,7 +90,7 @@ function getTextAreaBackgroundClass(hour, currentHour) {
         hour === currentHour ? 'present' :
         'future';
 }
-//create button save
+//create save button for every hour
 function createSaveBtn(hour) {
     const saveBtn = document.createElement('button');
     saveBtn.classList.add('saveBtn');
@@ -102,11 +110,12 @@ function appendTimeblockColumns(timeblockRow, hourCol, textAreaCol, saveBtnCol) 
 
 //functions for saving to local storage
 function containerClicked(event, timeblockList) {
+    // condition when button clicked
     if (event.target.matches('button') || event.target.matches('.fa-save')) {
         // get the hour of clicked time block
         const timeblockHour = event.target.matches('.fa-save') ? event.target.parentElement.dataset.hour : event.target.dataset.hour;
         // get the text of current text block
-        const textAreaValue = document.querySelector(`#timeblock-${timeblockHour} textarea`).value;;
+        const textAreaValue = document.querySelector(`#timeblock-${timeblockHour} textarea`).value;
         //get text from time blocks pressed
         placeTimeblockInList(new TimeblockObj(timeblockHour, textAreaValue), timeblockList);
         //push to new obj
@@ -114,7 +123,7 @@ function containerClicked(event, timeblockList) {
         //save and push to time block list in local storage
     }
 }
-
+//parse new created object to the timeblock list
 function placeTimeblockInList(newTimeblockObj, timeblockList) {
     if (timeblockList.length > 0) {
         for (let savedTimeblock of timeblockList) {
@@ -127,7 +136,7 @@ function placeTimeblockInList(newTimeblockObj, timeblockList) {
     timeblockList.push(newTimeblockObj);
     return;
 }
-
+// set entered text to the time block
 function setTimeblockText(timeblockList) {
     if (timeblockList.length === 0) {
         return;
@@ -138,12 +147,8 @@ function setTimeblockText(timeblockList) {
         }
     }
 }
-/*
+
 $("#clearDay").on("click", function() {
     localStorage.clear();
-    initPage();
+    //clear all stored values
 })
-
-function initPage() {
-
-}*/

@@ -5,16 +5,14 @@
 * [Moment.js](https://momentjs.com/) library needed to work with date and time. 
 
 ## What is done
-* Display current date and time on the top of calendar
-* Time blocks for standard business hours presented when scrolling
-* Each time blocks are coded to indicate whether in the past (light shell), future(purple) or present(bisque)
+* Display current date and real time on the top of calendar
+* Time blocks for standard business hours presented when scrolling (9AM-5PM)
+* The time blocks are coded to indicate whether in the past (light shell), future(purple) or present(bisque)
 * The user can enter a event when clicking into the timeblocks
 * The event is saved to local storage when clicking the save button
-* When refreshing the page, the saved events persist
+* When refreshing the page, the saved events persist if the user does not click clear button
+* The clear button deletes local storage. After clicking, then refresh the page to clear screen
 * Add sticky footer
-
-## What needs to be done
-* Add a clear button
 
 ## User Story
 
